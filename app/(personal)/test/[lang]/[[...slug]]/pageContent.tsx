@@ -8,7 +8,10 @@ type PageContentProps = {
 }
 
 export const PageContent = async (props: PageContentProps) => {
-  const {data} = await sanityFetch({query: pagesBySlugQuery, params: props.params})
+  const {params} = props
+  const slug = (await params).slug[0]
+
+  const {data} = await sanityFetch({query: pagesBySlugQuery, params: {slug}})
 
   // Only show the 404 page if we're in production, when in draft mode we might be about to create a page on this slug, and live reload won't work on the 404 route
   if (!data?._id && !(await draftMode()).isEnabled) {
