@@ -1,7 +1,10 @@
 import {sanityFetch} from '@/sanity/lib/live'
 import {slugsByTypeQuery} from '@/sanity/lib/queries'
+import {Suspense} from 'react'
 import {PageContent} from './pageContent'
 import {PageContent2} from './pageContent2'
+
+export const experimental_ppr = true
 
 const langs = ['en', 'no']
 
@@ -32,7 +35,11 @@ export default async function Page(props: Props) {
   const params = await props.params
 
   if (params.slug[0] === 'paige') {
-    return <PageContent2 params={props.params} searchParams={props.searchParams} />
+    return (
+      <Suspense>
+        <PageContent2 params={props.params} searchParams={props.searchParams} />
+      </Suspense>
+    )
   }
 
   return <PageContent params={props.params} />
