@@ -16,7 +16,7 @@ export function ProjectListItem(props: ProjectProps) {
         <ImageBox
           image={project.coverImage}
           alt={`Cover image from ${project.title}`}
-          classesWrapper="relative aspect-[16/9]"
+          classesWrapper="relative aspect-16/9"
         />
       </div>
       <div className="flex xl:w-1/4">

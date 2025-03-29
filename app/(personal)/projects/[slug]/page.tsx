@@ -92,7 +92,7 @@ export default async function ProjectSlugRoute({params}: Props) {
             image={coverImage as any}
             // @TODO add alt field in schema
             alt=""
-            classesWrapper="relative aspect-[16/9]"
+            classesWrapper="relative aspect-16/9"
           />
 
           <div className="divide-inherit grid grid-cols-1 divide-y lg:grid-cols-4 lg:divide-x lg:divide-y-0">

@@ -42,7 +42,7 @@ export default function IntroTemplate() {
 
   return (
     <div className="flex justify-center border-t border-gray-100 bg-gray-50/50">
-      <div className="mb-4 mt-20 grid max-w-screen-2xl grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
+      <div className="mb-4 mt-20 grid max-w-(--breakpoint-2xl) grid-cols-1 gap-y-20 md:grid-cols-2 md:gap-x-16 md:gap-y-32 lg:gap-x-32">
         <div className="self-center">
           <Image
             alt="An illustration of a browser window, a terminal window, the Sanity.io logo and the NextJS logo"
@@ -104,7 +104,7 @@ export default function IntroTemplate() {
 
                       <div className="mt-3">
                         <a
-                          className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
+                          className="inline-flex rounded-sm bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
                           href={repoURL}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -134,7 +134,7 @@ export default function IntroTemplate() {
 
                   <div className="mt-3">
                     <Link
-                      className="inline-flex rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
+                      className="inline-flex rounded-sm bg-blue-500 px-4 py-2 text-white hover:bg-blue-800"
                       href={studioURL}
                     >
                       Go to Sanity Studio
