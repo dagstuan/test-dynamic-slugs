@@ -1,14 +1,14 @@
 import {sanityFetch} from '@/sanity/lib/live'
 import {slugsByTypeQuery} from '@/sanity/lib/queries'
-import dynamic from 'next/dynamic'
+import {PageContent} from './pageContent'
+import {PageContent2} from './pageContent2'
 
 const langs = ['en', 'no']
 
 type Props = {
   params: Promise<{lang: string; slug: string[]}>
+  searchParams: Promise<{[key: string]: string}>
 }
-
-const PageContent = dynamic(() => import('./pageContent').then((mod) => mod.PageContent))
 
 export async function generateStaticParams() {
   const {data} = await sanityFetch({
@@ -29,6 +29,11 @@ export async function generateStaticParams() {
 }
 
 export default async function Page(props: Props) {
-  const {params} = props
-  return <PageContent params={params} />
+  const params = await props.params
+
+  if (params.slug[0] === 'paige') {
+    return <PageContent2 params={props.params} searchParams={props.searchParams} />
+  }
+
+  return <PageContent params={props.params} />
 }
