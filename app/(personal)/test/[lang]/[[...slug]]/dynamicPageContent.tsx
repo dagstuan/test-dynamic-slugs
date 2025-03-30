@@ -3,13 +3,15 @@ import {pagesBySlugQuery} from '@/sanity/lib/queries'
 import {draftMode} from 'next/headers'
 import {notFound} from 'next/navigation'
 
-type PageContentProps = {
+type DynamicPageContent = {
   params: Promise<{slug: string[]; lang: string}>
+  searchParams: Promise<{[key: string]: string}>
 }
 
-export const PageContent = async (props: PageContentProps) => {
+export const DynamicPageContent = async (props: DynamicPageContent) => {
   const {params} = props
   const slug = (await params).slug[0]
+  const searchParams = (await props.searchParams) || {}
 
   const {data} = await sanityFetch({query: pagesBySlugQuery, params: {slug}})
 
@@ -20,5 +22,9 @@ export const PageContent = async (props: PageContentProps) => {
 
   const {title} = data ?? {}
 
-  return <>{title}</>
+  return (
+    <>
+      Dynamic page: {title} {JSON.stringify(searchParams)}. Generated: {new Date().toISOString()}
+    </>
+  )
 }

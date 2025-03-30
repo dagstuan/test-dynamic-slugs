@@ -6,7 +6,6 @@ const config: NextConfig = {
   experimental: {
     // Speeds up performance by automatically generating useMemo and useCallback in client components
     reactCompiler: true,
-    ppr: 'incremental',
   },
   images: {
     remotePatterns: [{hostname: 'cdn.sanity.io'}],
